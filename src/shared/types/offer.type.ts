@@ -1,10 +1,10 @@
-import { OfferType } from './offer-type.enum.js';
+import { OfferType, CityType, ServicesType, CoordinatesType } from './index.js';
 
 export type Offer = {
   title: string;
   description: string;
   postDate: Date;
-  city: string;
+  city: CityType;
   preview: string;
   photos: string[];
   isPremium: boolean;
@@ -14,8 +14,8 @@ export type Offer = {
   rooms: number;
   guests: number;
   cost: number;
-  services: string[];
+  services: ServicesType[];
   author: string;
   comments: number;
-  coordinates: [string, string];
+  coordinates: CoordinatesType;
 };

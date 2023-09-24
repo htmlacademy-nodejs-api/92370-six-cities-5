@@ -1,0 +1,45 @@
+{
+  "api": {
+    "titles": [
+      "Тёмная башня",
+      "Кофешоп №1",
+      "Елисейские поля",
+      "Кремль",
+      "Мавзолей"
+    ],
+    "descriptions": [
+      "Уютные апартаменты с потрясающим видом на ночной город.",
+      "Модные апартаменты в самом центре города, рядом с лучшим кофеен.",
+      "Роскошные апартаменты в историческом квартале с парковой зоной.",
+      "Эксклюзивные апартаменты с видом на историческую крепость.",
+      "Современные апартаменты с историческим шармом и комфортом."
+    ],
+    "citys": ["Paris", "Amsterdam", "Hamburg", "Dusseldorf", "Cologne"],
+    "photos": [
+      "https://almode.ru/uploads/posts/2021-04/1619693748_25-p-parizhskie-kvartiri-interer-27.jpg",
+      "https://www.residences-immobilier.com/locations-saisonnieres/images/secteurs/secteur-0005.jpg",
+      "https://almode.ru/uploads/posts/2021-07/1626088559_31-almode_ru-p-kvartira-v-parizhe-33.jpg",
+      "https://thailand-good.ru/wp-content/uploads/3/d/d/3dda2d1269401bbf682fd57fbf2e4d9d.jpeg",
+      "https://almode.ru/uploads/posts/2021-04/1619693748_25-p-parizhskie-kvartiri-interer-27.jpg"
+    ],
+    "services": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "type": ["apartment", "house", "room", "hotel"],
+    "coordinates": [
+      { "latitude": "48.85661", "longitude": "2.351499" },
+      { "latitude": "50.938361", "longitude": "53.550341" },
+      { "latitude": "50.846557", "longitude": "4.351697" },
+      { "latitude": "52.370216", "longitude": "4.895168" },
+      { "latitude": "53.550341", "longitude": "10.000654" }
+    ],
+    "isPremium": [true, false],
+    "isFavorite": [true, false]
+  }
+}
