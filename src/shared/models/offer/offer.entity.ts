@@ -42,7 +42,7 @@ export class OfferEntity extends defaultClasses.TimeStamps {
     required: true,
   })
   public authorId!: Ref<AuthorEntity>;
-  
+
   @prop({
     type: () => String,
     enum: CityType,

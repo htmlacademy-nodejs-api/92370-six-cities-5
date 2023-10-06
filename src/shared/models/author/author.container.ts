@@ -11,7 +11,7 @@ export function createAuthorContainer() {
     .bind<AuthorService>(Component.AuthorService)
     .to(DefaultAuthorService)
     .inSingletonScope();
-    authorContainer
+  authorContainer
     .bind<types.ModelType<AuthorEntity>>(Component.AuthorModel)
     .toConstantValue(AuthorModel);
 
