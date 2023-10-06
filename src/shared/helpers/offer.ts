@@ -1,4 +1,4 @@
-import { CityType, Offer, OfferType, ServicesType } from '../types/index.js';
+import { CityType, Offer, OfferType, ServicesType, Author, AuthorType } from '../types/index.js';
 
 export function createOffer(offerData: string): Offer {
   const [
@@ -16,10 +16,22 @@ export function createOffer(offerData: string): Offer {
     guests,
     cost,
     services,
-    author,
+    name,
+    email,
+    avatar,
+    password,
+    typeAuthor,
     comments,
     coordinates,
   ] = offerData.replace('\n', '').split('\t');
+
+  const author: Author = {
+    name,
+    email,
+    avatar,
+    password,
+    type: typeAuthor as AuthorType,
+  };
 
   return {
     title,

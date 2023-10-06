@@ -1,5 +1,6 @@
 export * from './offer.type.js';
 export * from './author.type.js';
+export * from './author.enum.js';
 export * from './offer-type.enum.js';
 export * from './city.enum.js';
 export * from './services.enum.js';
