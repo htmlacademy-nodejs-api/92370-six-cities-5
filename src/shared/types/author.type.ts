@@ -7,4 +7,3 @@ export type Author = {
   password: string;
   type: AuthorType;
 }
-
