@@ -1,0 +1,239 @@
+openapi: 3.0.0
+info:
+  title: API сервер для демо-проекта «5 городов».
+  description: |-
+    * Список ресурсов и маршрутов сервера «5 городов».
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 2.0.0
+tags:
+  - name: offers
+    description: Действия с объявлениями.
+  - name: comments
+    description: Действия с комментариями.
+  - name: users
+    description: Действия с пользователем.
+paths:
+
+  /offers/create3:
+    post:
+      tags:
+        - offers
+      summary: Создание предложения
+      description: Создание нового предложения. Могут создавать только зарегестриванные пользователи.
+      requestBody:
+        description: Информация для создания нового предложения.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/offer'
+        required: true
+      responses:
+        "200":
+          description: Предложение создано..
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/offer'
+
+  /offers/delete/{id}/:
+    delete:
+      tags:
+        - offers
+      summary: Удаление предложения
+      description: Удаление предложения. Можно удалять только свои предложения.
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: id not found
+        '401':
+          description: Unauthorized
+
+  /offers:
+    get:
+      tags:
+        - offers
+      summary: Получение предложений
+      description: Получение предложений, по дефолту 60 но можно больше.
+      parameters:
+        - in: query
+          name: number
+          schema:
+            type: integer
+          description: Number of items in this list
+      responses:
+        "200":
+          description: Предложения
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/offer'
+
+
+
+  /users/register:
+    post:
+      tags:
+        - users
+      summary: Регистрация пользователя
+      description: Регистрирует нового пользователя.
+
+      requestBody:
+        description: Информация для создания нового пользователя.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createUser'
+        required: true
+
+      responses:
+        "200":
+          description: Предлоежние создано.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/offer'
+
+  /users/login:
+    post:
+      tags:
+        - users
+      summary: Авторизация пользователя
+      description: Авторизует пользователя на основе логина и пароля
+
+    get:
+      tags:
+        - users
+      summary: Проверка состояния пользователя
+      description: Возвращает информацию по авторизованному пользователю
+
+  /users/{userId}/avatar:
+    post:
+      tags:
+        - users
+      summary: Загрузить изображение аватара
+      description: Загружает изображение аватара пользователя. Изображение
+        аватара должно быть в формате `png` или `jpg`.
+
+components:
+  schemas:
+    offer:
+      type: object
+
+      properties:
+        title:
+          type: string
+          example: Елисейские поля
+          minLength: 10
+          maxLength: 100
+        description:
+          type: string
+          example: Лучше просторные аппаратменты в Париже
+          minLength: 20
+          maxLength: 1024
+        postDate:
+          type: string
+          example: Sat Sep 13 275760 00:00:00 GMT+0000
+        city:
+          type: string
+          example: Paris
+        preview:
+          type: string
+          example: "https://almode.ru/uploads/posts/2021-04/1619693748_25-p-parizhskie-kvartiri-interer-27.jpg"
+        photos:
+          type: array
+          example: ["https://almode.ru/uploads/posts/2021-04/1619693748_25-p-parizhskie-kvartiri-interer-27.jpg"]
+          items:
+            type: string
+          minItems: 6
+          maxItems: 6
+        isPremium:
+          type: boolean
+        isFavorite:
+          type: boolean
+        rating:
+          type: number
+          example: 3.2
+          minimum: 1
+          maximum: 5
+        type:
+          type: string
+          enum: [apartment, house, room, hotel]
+          example: apartment
+        rooms:
+          type: integer
+          format: int32
+          example: 3
+          minimum: 1
+          maximum: 8
+        guests:
+          type: integer
+          format: int32
+          example: 2
+          minimum: 1
+          maximum: 10 
+        cost:
+          type: integer
+          format: int32
+          example: 34400
+          minimum: 100
+          maximum: 100000 
+        services:
+          type: array
+          enum: [Breakfast, Air conditioning, Laptop friendly workspace, Baby seat, Washer, Towels, Fridge]
+          example: Fridge
+          items:
+            type: string
+          minItems: 1
+          maxItems: 7
+        authorId:
+          type: string
+        comments:
+          type: integer
+          format: int32
+          example: 3
+        coordinates:
+          type: object
+          properties:
+            latitude:
+              type: string
+            longitude:
+              type: string
+
+    createUser:
+      type: object
+
+      properties:
+        name:
+         type: string
+         example: 'Nick'
+         minLength: 1
+         maxLength: 15
+        email:
+         type: string
+         format: email
+        avatar:
+          type: string
+          example: 'ava.jpeg'
+        password:
+          type: string
+        type:
+          type: string
+          enum: [pro, regular]
+          example: regular
+
+    user:
+      type: object
+
+      properties:
+        id:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        email:
+          type: string
+          example: keks@htmlacademy.ru
