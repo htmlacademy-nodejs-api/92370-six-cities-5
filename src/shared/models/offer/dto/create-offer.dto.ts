@@ -14,7 +14,6 @@ export class CreateOfferDto {
   public preview: string;
   public photos: string[];
   public isPremium: boolean;
-  public isFavorite: boolean;
   public rating: number;
   public type: OfferType;
   public rooms: number;
@@ -22,7 +21,6 @@ export class CreateOfferDto {
   public cost: number;
   public services: ServicesType[];
   public author: Author;
-  public comments: number;
   public coordinates: CoordinatesType;
   public authorId: string;
 }
