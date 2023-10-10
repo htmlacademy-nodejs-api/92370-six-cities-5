@@ -7,3 +7,4 @@ export * from './services.enum.js';
 export * from './mockOffer.type.js';
 export * from './coordinates.types.js';
 export * from './component.enum.js';
+export * from './sort-type.enum.js';
